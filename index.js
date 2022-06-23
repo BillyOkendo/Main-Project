@@ -24,3 +24,21 @@ function renderImageAndDetails(imageDetails){
   
 }
 
+
+
+
+// like button 
+const toggleHeart = () => {
+    const likeButton = document.querySelector("#like-button")
+      
+    likeButton.addEventListener("click", (event)  =>{
+   if(likeButton.textContent === "♡"){
+      likeButton.textContent = "♥"
+   } else {
+      likeButton.textContent = "♡";
+      
+   }
+   })
+  }
+  toggleHeart();
+
