@@ -52,7 +52,7 @@ const toggleHeart = () => {
 
   //leftdiv
   function fetchProducts(Product){
-//   console.log("render Product " + Product.id)
+  console.log("render Product " + Product.id)
   const productName = document.querySelector('card-name');
   const productImage = document.querySelector('#image-card');
   const productDescription = document.querySelector('#product-des');
@@ -150,6 +150,7 @@ function navRender(Product){
 function get(){
     fetchData()
     .then(Products => navRender(Products))
+    fetchData(1)
     .then(Products => fetchProducts(Products))
     
     

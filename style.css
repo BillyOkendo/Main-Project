@@ -78,4 +78,7 @@ button:active{
     transition: color 300ms;
     cursor: pointer;
   }
+  .list{
+    cursor: pointer;
+  }
   
