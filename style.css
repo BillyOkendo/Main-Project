@@ -3,5 +3,33 @@ body{
     background-size: cover;
     width: auto;
     height: auto;
-    opacity: 0.1;
+
+}
+.image{
+background-color: aquamarine;
+width: 400px;
+height:300px;
+margin: 0 auto;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 100px;
+position:relative; bottom:60px;
+}
+
+
+.holder{
+    float: left;
+    background-color: aquamarine;
+    width: 400px;
+height:500px;
+margin-top: 100px;
+margin-left: 20px;
+position:relative; bottom:77px;
+}
+
+
+h1{
+word-spacing: 150px;
+margin-left: 210px;
 }
