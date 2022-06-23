@@ -1,6 +1,6 @@
 let imgName = document.getElementById('card-name')
 let imgSrc = document.getElementById('image-card')
-// let imgCommentList = document.getElementById('comments-list')
+let imgdescription = document.getElementById('product-des')
 //Getting the image, title and the comments (GET METHOD)
 
 function displayImageAndDetails(){
