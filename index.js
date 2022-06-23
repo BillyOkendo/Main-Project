@@ -1,5 +1,7 @@
 let imgName = document.getElementById('card-name')
 let imgSrc = document.getElementById('image-card')
+let imgPrice = document.getElementById('price-tag')
+
 let imgDescription = document.getElementById('product-des')
 //Getting the image, title and the comments (GET METHOD)
 
@@ -15,8 +17,9 @@ function renderImageAndDetails(imageDetails){
   imgName.textContent = imageDetails.name;
   imgSrc.src = imageDetails.image;
   imgDescription.textContent = imageDetails.description;
-  imgLikesCount.textContent =`${imageDetails.likes} likes`;
- 
+//   imgLikesCount.textContent =`${imageDetails.likes} likes`;
+  imgPrice.textContent = imageDetails.price;
+  
 
   
 }
