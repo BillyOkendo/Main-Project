@@ -58,24 +58,7 @@ const toggleHeart = () => {
   const productDescription = document.querySelector('#product-des');
   const productPrice = document.querySelector('#product-des');
   }
-  // Target Description FORM
-//   const beerDescriptionForm= document.querySelector('#description-form');
-//   const beerEditDescription = document.querySelector('#description');
-//   beerDescriptionForm.reset();
-// productName.textContent = Product.name,                   // beer name
-//     productImage.src = Product.image_url,                     // beer image
-//     productDescription.textContent = Product.description,     // beer desc.
-//     productEditDescription.value = Product.description        //beer desc. form
-
-  // update description
   
-// function updateDescription(button){
-
-//     button.preventDefault();        
-//     Product.description = productEditDescription.value;
-//     patchProduct(Product)
-// };
-
 
 
 
@@ -119,7 +102,7 @@ function fetchData(Product=null){
 
 
 function navRender(Product){
-    // Navigation Beer List
+
     const navProductList = document.querySelector('#product-list');
     while (navProductList.firstElementChild){
         navProductList.removeChild(navProductList.lastElementChild)
