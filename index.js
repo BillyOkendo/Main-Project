@@ -6,7 +6,7 @@ let imgDescription = document.getElementById('product-des')
 //Getting the image, title and the comments (GET METHOD)
 
 function displayImageAndDetails(){
-    const imageDetails = fetch ("http://localhost:3000/product/1")
+    const imageDetails = fetch ("http://localhost:3000/products/1")
     .then(resp => resp.json())
     .then(data => renderImageAndDetails(data))
     return imageDetails
@@ -62,18 +62,10 @@ const toggleButton = () => {
     
 
 
-    const productDescriptionParagraph= document.querySelector('#product-des');
-    const productEditDescription = document.querySelector('#description');
-    productDescriptionParagraph.reset();
-    
-    productName.textContent = product.name,                   
-    productImage.src = product.image_url,                   
-    productDescription.textContent = product.description,     
-    productEditDescription.value = product.description        
     
   }
     
-    function updateDescription(button){
+    function updateDescription(product){
 
         button.preventDefault();        
         product.description = productEditDescription.value;
@@ -104,8 +96,8 @@ function postProduct(product){
         headers: {'content-Type': 'application/json'},
         body: JSON.stringify(beer)
     })
-    .then(reponse => response.json())
-    .then(data => fetchBeers(data))
+    .then(response => response.json())
+    .then(data => fetchProducts(data))
     .catch(err => console.log(`Error: ${err}`))
 }
 
@@ -121,8 +113,7 @@ function fetchData(product=null){
     };
 
 
-function navRender(beers){
-    // Navigation Beer List
+function navRender(products){
     const navProductList = document.querySelector('#product-list');
     while (navProductList.firstElementChild){
         navProductList.removeChild(navProductList.lastElementChild)
@@ -132,7 +123,7 @@ function navRender(beers){
         const navElement = document.createElement('li');
         navElement.textContent = product.name;
         navElement.setAttribute('index', product.id);
-        navBeerList.append(navElement)
+        navProductList.append(navElement)
 
         navElement.addEventListener('click', (button)=> {
             
@@ -155,6 +146,7 @@ function get(){
 
     fetchData(1)
     .then(products => fetchProducts(products))
+
     
 };
 
