@@ -6,7 +6,7 @@ let imgDescription = document.getElementById('product-des')
 //Getting the image, title and the comments (GET METHOD)
 
 function displayImageAndDetails(){
-    const imageDetails = fetch ("http://localhost:3000/Product/1")
+    const imageDetails = fetch ("http://localhost:3000/product/1")
     .then(resp => resp.json())
     .then(data => renderImageAndDetails(data))
     return imageDetails
@@ -28,7 +28,7 @@ function renderImageAndDetails(imageDetails){
 
 
 // like button 
-const toggleHeart = () => {
+const toggleButton = () => {
     const likeButton = document.querySelector("#like-button")
       
     likeButton.addEventListener("click", (event)  =>{
@@ -40,37 +40,122 @@ const toggleHeart = () => {
    }
    })
   }
-  toggleHeart();
+  toggleButton();
 
 
 
 
 
 
+ 
 
 
- // left
- const getFirstProduct = () => {
-    const beerDetailContainer = document.querySelector(".beer-details");
-    const image = beerDetailContainer.querySelector("#beer-image");
-    const beerName = beerDetailContainer.querySelector("#beer-name");
-    const beerDescription = beerDetailContainer.querySelector("#beer-description");
-    const reviewList = beerDetailContainer.querySelector("#review-list");
-    const reviewDescription = document.createElement("li");
 
-    fetch(`http://localhost:3000/beers/1`)
-      .then(res => res.json())
-      .then(beer => {
-              image.src = `${beer.image_url}`;
-              beerName.textContent = `${beer.name}`;
-              beerDescription.textContent = `${beer.description}`
-              reviewDescription.textContent = `${beer.reviews}`
-              reviewList.append(reviewDescription)
 
-              reviewDescription.addEventListener("click", () => {
-                reviewDescription.remove();
-            })
-             
-      })
-      .catch(err => console.log(err))
+
+  //leftside
+  function fetchProducts(product){
+    console.log("render product " + product.id)
+    const productName = document.querySelector('#card-name');
+    const productImage = document.querySelector('#image-card');
+    const productDescription = document.querySelector('#product-des');
+    
+
+
+    const productDescriptionParagraph= document.querySelector('#product-des');
+    const productEditDescription = document.querySelector('#description');
+    productDescriptionParagraph.reset();
+    
+    productName.textContent = product.name,                   
+    productImage.src = product.image_url,                   
+    productDescription.textContent = product.description,     
+    productEditDescription.value = product.description        
+    
+  }
+    
+    function updateDescription(button){
+
+        button.preventDefault();        
+        product.description = productEditDescription.value;
+        patchProduct(product)
+    };
+
+
+   
+
+
+
+function patchProduct(product){
+    console.log(product, product.id)
+    fetch(`http://localhost:3000/products/${product.id}`,
+        {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(product)
+        })
+        .then(response => response.json())
+        .then(data => fetchProducts(data))
+        .catch(err => console.log(`Error: ${err}`))
+};
+
+function postProduct(product){
+    fetch('http://localhost:3000/products', {
+        method: 'POST',
+        headers: {'content-Type': 'application/json'},
+        body: JSON.stringify(beer)
+    })
+    .then(reponse => response.json())
+    .then(data => fetchBeers(data))
+    .catch(err => console.log(`Error: ${err}`))
 }
+
+function fetchData(product=null){
+    let baseURL = 'http://localhost:3000/products/'
+    return new Promise((resolve, reject) => {
+        let url = product == null ? baseURL : `${baseURL + product}`
+        fetch(url)
+        .then(response => response.json())
+        .then(data => resolve(data))
+        .catch(err => console.log(`Error: ${err}`));
+        })
+    };
+
+
+function navRender(beers){
+    // Navigation Beer List
+    const navProductList = document.querySelector('#product-list');
+    while (navProductList.firstElementChild){
+        navProductList.removeChild(navProductList.lastElementChild)
+    };
+
+    products.forEach(product => {
+        const navElement = document.createElement('li');
+        navElement.textContent = product.name;
+        navElement.setAttribute('index', product.id);
+        navBeerList.append(navElement)
+
+        navElement.addEventListener('click', (button)=> {
+            
+            console.log("EventPhase: " + button.eventPhase)
+            
+            fetchData(button.target.getAttribute('index'))
+            .then(product => {
+                console.log("from fetch-> product id " + product.id);
+                fetchProducts(product);
+            });
+        }, false);
+    });
+
+
+};
+
+function get(){
+    fetchData()
+    .then(products => navRender(products))
+
+    fetchData(1)
+    .then(products => fetchProducts(products))
+    
+};
+
+get()
