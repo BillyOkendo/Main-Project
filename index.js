@@ -54,47 +54,11 @@ const toggleButton = () => {
 
 
   //leftside
-  function fetchProducts(product){
-    console.log("render product " + product.id)
-    const productName = document.querySelector('#card-name');
-    const productImage = document.querySelector('#image-card');
-    const productDescription = document.querySelector('#product-des');
-    
-
-
-    
-  }
-    
-    function updateDescription(product){
-
-        button.preventDefault();        
-        product.description = productEditDescription.value;
-        patchProduct(product)
-    };
-
-
-   
-
-
-
-function patchProduct(product){
-    console.log(product, product.id)
-    fetch(`http://localhost:3000/products/${product.id}`,
-        {
-            method: 'PATCH',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(product)
-        })
-        .then(response => response.json())
-        .then(data => fetchProducts(data))
-        .catch(err => console.log(`Error: ${err}`))
-};
-
-function postProduct(product){
+function postProduct(){
     fetch('http://localhost:3000/products', {
         method: 'POST',
         headers: {'content-Type': 'application/json'},
-        body: JSON.stringify(beer)
+        body: JSON.stringify(product)
     })
     .then(response => response.json())
     .then(data => fetchProducts(data))
@@ -127,12 +91,10 @@ function navRender(products){
 
         navElement.addEventListener('click', (button)=> {
             
-            console.log("EventPhase: " + button.eventPhase)
-            
             fetchData(button.target.getAttribute('index'))
             .then(product => {
-                console.log("from fetch-> product id " + product.id);
-                fetchProducts(product);
+                console.log("from fetch-> product id " + product.name + product.price + product.description);
+               
             });
         }, false);
     });
@@ -143,11 +105,6 @@ function navRender(products){
 function get(){
     fetchData()
     .then(products => navRender(products))
-
-    fetchData(1)
-    .then(products => fetchProducts(products))
-    
-    
 };
 
 get()
