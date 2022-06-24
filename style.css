@@ -6,15 +6,15 @@ body{
 
 }
 .card{
-background-color: aquamarine;
-width: 400px;
-height:550px;
-margin: 0 auto;
-margin-left: 700px;
-margin-top: 100px;
-position:relative; bottom:55px;
-text-align: center;
-opacity: 0.9;
+    background-color: aquamarine;
+    width: 400px;
+    height:550px;
+    margin: 0 auto;
+    margin-left: 700px;
+    margin-top: 100px;
+    position:relative; bottom:55px;
+    text-align: center;
+    opacity: 0.9;
 }
 
 h3{
@@ -26,10 +26,10 @@ h3{
     float: left;
     background-color: aquamarine;
     width: 400px;
-height:500px;
-margin-top: 100px;
-margin-left: 20px;
-align-items: center;
+    height:500px;
+    margin-top: 100px;
+    margin-left: 20px;
+    align-items: center;
 
 position:relative; bottom:77px;
 opacity: 0.7;
@@ -37,15 +37,15 @@ opacity: 0.7;
 
 
 h1{
-word-spacing: 150px;
-margin-left: 210px;
+    word-spacing: 150px;
+    margin-left: 210px;
 }
 
 .image{
     width: 90%;
     height:250px;
-margin-left: 5px;
-margin-top: 10px;
+    margin-left: 5px;
+    margin-top: 10px;
 }
 
 
@@ -57,9 +57,9 @@ margin-top: 10px;
     color: rgb(199, 176, 45);
     width: 200px;
     height: 50px;
-align-items: center;
-border-radius: 10px;
-cursor: pointer;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
 
 }
 button:hover{
@@ -71,11 +71,11 @@ button:active{
 
 
 .like-button {
-    color: rgb(255, 127, 80);
+    color: none;
     font-size: 1.7rem;
     border: none;
     background: none;
-    transition: color 300ms;
+    transition: none;
     cursor: pointer;
   }
   .list{

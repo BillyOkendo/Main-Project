@@ -32,10 +32,10 @@ const toggleHeart = () => {
     const likeButton = document.querySelector("#like-button")
       
     likeButton.addEventListener("click", (event)  =>{
-   if(likeButton.textContent === "♡"){
-      likeButton.textContent = "♥"
+   if(likeButton.textContent === "👎🏻"){
+      likeButton.textContent = "👍🏻"
    } else {
-      likeButton.textContent = "♡";
+      likeButton.textContent = "👎🏻";
       
    }
    })
@@ -49,97 +49,28 @@ const toggleHeart = () => {
 
 
 
+ // left
+ const getFirstProduct = () => {
+    const beerDetailContainer = document.querySelector(".beer-details");
+    const image = beerDetailContainer.querySelector("#beer-image");
+    const beerName = beerDetailContainer.querySelector("#beer-name");
+    const beerDescription = beerDetailContainer.querySelector("#beer-description");
+    const reviewList = beerDetailContainer.querySelector("#review-list");
+    const reviewDescription = document.createElement("li");
 
-  //leftdiv
-  function fetchProducts(Product){
-  console.log("render Product " + Product.id)
-  const productName = document.querySelector('card-name');
-  const productImage = document.querySelector('#image-card');
-  const productDescription = document.querySelector('#product-des');
-  const productPrice = document.querySelector('#product-des');
-  }
-  
+    fetch(`http://localhost:3000/beers/1`)
+      .then(res => res.json())
+      .then(beer => {
+              image.src = `${beer.image_url}`;
+              beerName.textContent = `${beer.name}`;
+              beerDescription.textContent = `${beer.description}`
+              reviewDescription.textContent = `${beer.reviews}`
+              reviewList.append(reviewDescription)
 
-
-
-
-  function patchProduct(Product){
-    console.log(Product, Product.id)
-    fetch(` http://localhost:3000/Product/${Product.id}`,
-    
-        {
-            method: 'PATCH',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(Product)
-        })
-        .then(response => response.json())
-        .then(data => fetchBeers(data))
-        .catch(err => console.log(`Error: ${err}`))
-};
-
-
-function postProduct(Product){
-    fetch('Product', {
-        method: 'POST',
-        headers: {'content-Type': 'application/json'},
-        body: JSON.stringify(Product)
-    })
-    .then(response => response.json())
-    .then(data => fetchProduct(data))
-    .catch(err => console.log(`Error: ${err}`))
+              reviewDescription.addEventListener("click", () => {
+                reviewDescription.remove();
+            })
+             
+      })
+      .catch(err => console.log(err))
 }
-
-function fetchData(Product=null){
-    let baseURL = 'http://localhost:3000/Product/'
-    return new Promise((resolve, reject) => {
-        let url = Product == null ? baseURL : `${baseURL + Product}`
-        fetch(url)
-        .then(response => response.json())
-        .then(data => resolve(data))
-        .catch(err => console.log(`Error: ${err}`));
-        })
-    };
-
-
-function navRender(Product){
-
-    const navProductList = document.querySelector('#product-list');
-    while (navProductList.firstElementChild){
-        navProductList.removeChild(navProductList.lastElementChild)
-    };
-
-     Product.forEach(Product => {
-        const navElement = document.createElement('li');
-        navElement.textContent = Product.name;
-        navElement.setAttribute('index', Product.id);
-        navProductList.append(navElement)
-
-        navElement.addEventListener('click', (button)=> {
-            
-            console.log("EventPhase: " + button.eventPhase)
-            
-            fetchData(button.target.getAttribute('index'))
-            .then(Product => {
-                console.log("from fetch-> Product id " + Product.id);
-                fetchProducts(Product);
-            });
-         }, false);
-     });
-
-
-};
-
-
-function get(){
-    fetchData()
-    .then(Products => navRender(Products))
-    fetchData(1)
-    .then(Products => fetchProducts(Products))
-    
-    
-};
-  
-
-get()
-
-  
