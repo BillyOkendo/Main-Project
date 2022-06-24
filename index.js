@@ -146,7 +146,7 @@ function get(){
 
     fetchData(1)
     .then(products => fetchProducts(products))
-
+    
     
 };
 
