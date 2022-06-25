@@ -8,11 +8,11 @@ body{
 .card{
     background-color: aquamarine;
     width: 400px;
-    height:550px;
+    height:650px;
     margin: 0 auto;
     margin-left: 900px;
     margin-top: 100px;
-    position:relative; bottom:55px;
+    position:relative; bottom:350px;
     text-align: center;
     opacity: 0.9;
 }
@@ -21,7 +21,12 @@ h3{
     margin-top: auto;
 
 }
-
+.nav{
+    line-height:30px ;
+    margin-left: 675px;
+    align-items: center;
+    width: 10%;
+}
 .holder{
     background-image: url("https://m.media-amazon.com/images/I/71czD50UQ5L._AC_UX385_.jpg");
     background-size: cover;
@@ -29,29 +34,29 @@ h3{
     height: auto;
     float: left;
     width: 650px;
-    height:700px;
+    height:550px;
     margin-top: 100px;
     margin-left: 20px;
     align-items: center;
 
-position:relative; bottom:77px;
+position:relative; bottom:350px;
 opacity: 0.7;
 }
 
 
 h1{
-    word-spacing: 150px;
+    word-spacing: 400px;
     margin-left: 210px;
 }
 
 .image{
     width: 90%;
-    height:250px;
+    height:350px;
     margin-left: 5px;
     margin-top: 10px;
 }
 .list{
-    color: blue;
+    color: hsl(33, 60%, 3%);
 }
 
 
