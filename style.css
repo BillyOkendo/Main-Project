@@ -10,7 +10,7 @@ body{
     width: 400px;
     height:550px;
     margin: 0 auto;
-    margin-left: 700px;
+    margin-left: 900px;
     margin-top: 100px;
     position:relative; bottom:55px;
     text-align: center;
@@ -23,10 +23,13 @@ h3{
 }
 
 .holder{
+    background-image: url("https://m.media-amazon.com/images/I/71czD50UQ5L._AC_UX385_.jpg");
+    background-size: cover;
+    width: auto;
+    height: auto;
     float: left;
-    background-color: aquamarine;
-    width: 400px;
-    height:500px;
+    width: 650px;
+    height:700px;
     margin-top: 100px;
     margin-left: 20px;
     align-items: center;
@@ -47,7 +50,9 @@ h1{
     margin-left: 5px;
     margin-top: 10px;
 }
-
+.list{
+    color: blue;
+}
 
 
 
